@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Happy Valentine's Day 💖</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        height: 100vh;
+        background: linear-gradient(135deg, #8ec5fc, #4a83ed);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .card-container {
+        perspective: 1000px;
+        text-align: center;
+      }
+
+      /* QUESTION BOX */
+      .question-box {
+        background: #fff;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .question-box {
+        position: relative;
+      }
+
+      #noBtn {
+        position: absolute;
+      }
+
+      .question-box h2 {
+        font-family: "Pacifico", cursive;
+        color: #2563eb; /* blue */
+      }
+
+      #noBtn {
+        position: absolute;
+      }
+
+      /* CARD */
+      .valentine-card {
+        width: 420px;
+        height: 520px;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 1s;
+        cursor: pointer;
+        padding: 30px;
+        display: none; /* hidden at first */
+      }
+
+      .valentine-card.flip {
+        transform: rotateY(180deg);
+      }
+
+      .card-face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-front {
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card-front h1 {
+        font-family: "Pacifico", cursive;
+        color: #2563eb;
+      }
+
+      .heart {
+        font-size: 80px;
+        animation: beat 1s infinite;
+      }
+
+      @keyframes beat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+
+      .card-back {
+        background: #2563eb;
+        color: #fff;
+        transform: rotateY(180deg);
+        padding: 25px;
+        text-align: center;
+      }
+
+      .card-back h2 {
+        font-family: "Pacifico", cursive;
+      }
+
+      /* FLOATING HEARTS */
+      .floating-heart {
+        position: absolute;
+        color: rgba(59, 130, 246, 0.6); /* blue */
+        font-size: 24px;
+        animation: floatUp 6s linear infinite;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-600px);
+          opacity: 0;
+        }
+      }
+
+      /* YES BUTTON GROW */
+      #yesBtn {
+        transition: transform 0.4s ease;
+      }
+      #yesBtn.grow {
+        transform: scale(1.25);
+      }
+
+      #noBtn {
+        transition:
+          left 0.15s ease,
+          top 0.15s ease;
+      }
+
+      /* BACKGROUND SLIDESHOW */
+      #bgSlideshow {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.8s ease;
+      }
+
+      #bgSlideshow.show {
+        opacity: 0.3;
+      }
+
+      .slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1s ease;
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card-container">
+      <!-- QUESTION -->
+      <div class="question-box" id="questionBox">
+        <h2 id="questionText">Will you be my Valentine? 💙</h2>
+        <div class="text-start mt-5">
+          <button id="yesBtn" class="px-5 me-3 btn-lg btn btn-primary">
+            Yes
+          </button>
+
+          <button
+            id="noBtn"
+            class="px-5 btn btn-lg btn-outline-primary"
+          >
+            No
+          </button>
+        </div>
+      </div>
+
+      <!-- CARD -->
+      <div class="valentine-card mt-4" id="valentineCard">
+        <div class="card-face card-front">
+          <div class="heart">💙</div>
+          <h1>Tap Me</h1>
+          <p class="text-muted">A little surprise awaits</p>
+        </div>
+
+        <div class="card-face card-back">
+          <h2>Happy Valentine’s Day 💕</h2>
+          <p class="mt-4">
+            From the moment you came into my life, everything became brighter.
+            Your laughter, your kindness, and the way you make even ordinary
+            days feel special—it all means more than words can say. If love is a
+            journey, then you are my favorite destination and my favorite
+            companion all at once. And no matter where life takes us, my heart
+            will always find its way back to you. So here’s my promise, written
+            plainly and honestly: I will love you with intention. I will support
+            you when you stumble. I will celebrate you when you shine. And I
+            will choose you—today, tomorrow, and every day that follows. Happy
+            Valentine’s Day, my love. Thank you for being you. Thank you for
+            being mine.
+          </p>
+          <p class="mt-4 fw-bold">—Your Panda 🐼💙</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background Slideshow -->
+    <div id="bgSlideshow">
+      <div class="slide active" style="background-image: url(pics/1.jpg)"></div>
+      <div class="slide" style="background-image: url(pics/2.jpg)"></div>
+      <div class="slide" style="background-image: url(pics/3.jpg)"></div>
+      <div class="slide" style="background-image: url(pics/4.jpg)"></div>
+      <div class="slide" style="background-image: url(pics/5.JPG)"></div>
+      <div class="slide" style="background-image: url(pics/6.JPG)"></div>
+      <div class="slide" style="background-image: url(pics/7.JPG)"></div>
+      <div class="slide" style="background-image: url(pics/8.JPG)"></div>
+      <div class="slide" style="background-image: url(pics/9.JPG)"></div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      $(function () {
+        let noHoverCount = 0;
+        const noTexts = ["Not today", "Seriously?", "Okay fine..."];
+
+        /* YES BUTTON SLOWLY GROWS */
+        setInterval(() => {
+          $("#yesBtn").toggleClass("grow");
+        }, 1200);
+
+        $("#yesBtn").on("click", function () {
+          $("#questionBox").fadeOut(400, function () {
+            $("#valentineCard").fadeIn(600);
+          });
+        });
+
+        /* NO BUTTON ESCAPE + TEXT CHANGE */
+        $("#noBtn").on("mouseenter", function () {
+          const $box = $("#questionBox");
+          const $no = $(this);
+          const $yes = $("#yesBtn");
+          const $text = $("#questionText");
+
+          noHoverCount++;
+
+          // Change text
+          if (noHoverCount <= noTexts.length) {
+            $no.text(noTexts[noHoverCount - 1]);
+          }
+
+          // Disappear after 5 tries
+          if (noHoverCount >= 5) {
+            $no.fadeOut();
+            return;
+          }
+
+          const boxW = $box.innerWidth();
+          const boxH = $box.innerHeight();
+
+          const noW = $no.outerWidth();
+          const noH = $no.outerHeight();
+
+          // Forbidden zones (Yes button + Question text)
+          const forbidden = [
+            {
+              pos: $yes.position(),
+              w: $yes.outerWidth(),
+              h: $yes.outerHeight(),
+            },
+            {
+              pos: $text.position(),
+              w: $text.outerWidth(),
+              h: $text.outerHeight(),
+            },
+          ];
+
+          let x,
+            y,
+            overlap,
+            attempts = 0;
+
+          do {
+            x = Math.random() * (boxW - noW);
+            y = Math.random() * (boxH - noH);
+            overlap = false;
+
+            forbidden.forEach((zone) => {
+              if (
+                x < zone.pos.left + zone.w &&
+                x + noW > zone.pos.left &&
+                y < zone.pos.top + zone.h &&
+                y + noH > zone.pos.top
+              ) {
+                overlap = true;
+              }
+            });
+
+            attempts++;
+          } while (overlap && attempts < 30);
+
+          $no.css({ left: x, top: y });
+        });
+
+        /* FLIP CARD */
+        $("#valentineCard").on("click", function () {
+          $(this).toggleClass("flip");
+
+          if ($(this).hasClass("flip")) {
+            // Show background
+            $("#bgSlideshow").addClass("show");
+
+            // Start slideshow
+            slideInterval = setInterval(nextSlide, 2000);
+          } else {
+            // Hide background
+            $("#bgSlideshow").removeClass("show");
+
+            // Stop slideshow
+            clearInterval(slideInterval);
+            slideInterval = null;
+          }
+        });
+
+        let slideIndex = 0;
+        const slides = $("#bgSlideshow .slide");
+
+        function nextSlide() {
+          slides.removeClass("active");
+          slideIndex = (slideIndex + 1) % slides.length;
+          slides.eq(slideIndex).addClass("active");
+        }
+
+        let slideInterval = null;
+      });
+    </script>
+  </body>
+</html>
