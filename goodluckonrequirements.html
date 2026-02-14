@@ -1,0 +1,59 @@
+<html>
+<head>
+<title> From PANDA </title>
+<style type="text/css">
+	body
+	{
+		padding: 0;
+		margin: 0;
+		background: #000000;
+	}
+	h1
+	{
+		position: absolute;
+		top: 30%;
+		left: 50%;
+		font-size: 5em;
+		padding: 0;
+		margin: 0;
+		text-align: center;
+		font-family: 'arial';
+		color: white;
+		transform: translateX(-50%)
+	}
+	div
+	{
+		position: absolute;
+		top: 45%;
+		left: 50%;
+		font-size: 3em;
+		padding: 0;
+		margin: 0;
+		text-align: center;
+		font-family: 'arial';
+		color: white;
+		transform: translateX(-50%)
+	}
+	button
+	{
+		padding: 0;
+		margin: 0;
+		position: absolute;
+		top: 60%;
+		left: 50%;
+		transform: translateX(-50%)
+	}
+	
+</style>
+<body>
+	<h1>HELLO AC!</h1>
+	<div id="txt1">GoodLuck on your requirements!</div>
+	<button id="btn1" onclick="document.getElementById("txt1").innerHTML="HIWORLD">Click here</button>
+</body>
+<script>
+	document.getElementById("btn1").onclick = function(){
+	document.getElementById("txt1").innerHTML="I LIKE YOU SO MUCH♥"
+	}
+</script>
+</head>
+</html>
